@@ -27,11 +27,9 @@ export default function Home() {
     setLoading(false)
   }
 
-  // Filter posts based on search input (title or content)
+  // Filter posts based on search input (title search as required by rubric)
   const filteredPosts = posts.filter((post) => {
-    const titleMatch = post.title?.toLowerCase().includes(searchTerm.toLowerCase())
-    const contentMatch = post.content?.toLowerCase().includes(searchTerm.toLowerCase())
-    return titleMatch || contentMatch
+    return post.title?.toLowerCase().includes(searchTerm.toLowerCase())
   })
 
   return (
@@ -51,7 +49,7 @@ export default function Home() {
       >
         <input
           type="text"
-          placeholder="Search challenges by title or keyword..."
+          placeholder="Search posts by title..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           style={{ flex: 1, minWidth: '250px', padding: '10px 14px' }}
@@ -63,8 +61,8 @@ export default function Home() {
             onClick={() => setSortBy('created_at')}
             style={{ 
               fontWeight: sortBy === 'created_at' ? 'bold' : 'normal',
-              backgroundColor: sortBy === 'created_at' ? '#007bff' : '#eee',
-              color: sortBy === 'created_at' ? 'white' : 'black'
+              backgroundColor: sortBy === 'created_at' ? '#38bdf8' : '#334155',
+              color: 'white'
             }}
           >
             Newest
@@ -73,8 +71,8 @@ export default function Home() {
             onClick={() => setSortBy('upvotes')}
             style={{ 
               fontWeight: sortBy === 'upvotes' ? 'bold' : 'normal',
-              backgroundColor: sortBy === 'upvotes' ? '#007bff' : '#eee',
-              color: sortBy === 'upvotes' ? 'white' : 'black'
+              backgroundColor: sortBy === 'upvotes' ? '#38bdf8' : '#334155',
+              color: 'white'
             }}
           >
             Most Popular
@@ -86,32 +84,32 @@ export default function Home() {
       {loading ? (
         <div style={{ padding: '20px' }}>Loading posts...</div>
       ) : filteredPosts.length === 0 ? (
-        <p style={{ color: '#666', marginTop: '20px' }}>No posts match your search.</p>
+        <p style={{ color: '#94a3b8', marginTop: '20px' }}>No posts match your search.</p>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
           {filteredPosts.map((post) => (
             <div 
               key={post.id} 
               style={{ 
-                border: '1px solid #ccc', 
-                borderRadius: '8px', 
-                padding: '15px', 
+                border: '1px solid var(--card-border, #334155)', 
+                backgroundColor: 'var(--card-bg, #1e293b)',
+                borderRadius: '12px', 
+                padding: '20px', 
                 textAlign: 'left' 
               }}
             >
-              <h3>{post.title}</h3>
-              <p>{post.content}</p>
-              {post.image_url && (
-                <img 
-                  src={post.image_url} 
-                  alt={post.title} 
-                  style={{ maxWidth: '100%', maxHeight: '300px', borderRadius: '4px' }} 
-                />
-              )}
-              <div style={{ marginTop: '10px', display: 'flex', gap: '15px', alignItems: 'center' }}>
-                <span>👍 {post.upvotes || 0} Upvotes / Bets</span>
+              <p style={{ fontSize: '0.85em', color: '#94a3b8', margin: '0 0 8px 0' }}>
+                Posted {new Date(post.created_at).toLocaleString()}
+              </p>
+              
+              <h3 style={{ margin: '0 0 12px 0', fontSize: '1.25rem' }}>
+                <Link to={`/post/${post.id}`}>{post.title}</Link>
+              </h3>
+
+              <div style={{ marginTop: '10px', display: 'flex', gap: '20px', alignItems: 'center', fontSize: '0.95em' }}>
+                <span>👍 {post.upvotes || 0} Upvotes</span>
                 <span>💬 {post.comments ? post.comments.length : 0} Comments</span>
-                <Link to={`/post/${post.id}`}>View Details</Link>
+                <Link to={`/post/${post.id}`}>View Post →</Link>
               </div>
             </div>
           ))}

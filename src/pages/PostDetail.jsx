@@ -91,7 +91,7 @@ export default function PostDetail() {
     <div style={{ padding: '20px', maxWidth: '650px', textAlign: 'left', margin: '0 auto' }}>
       <Link to="/">← Back to Feed</Link>
       <h2 style={{ marginTop: '15px' }}>{post.title}</h2>
-      <p style={{ fontSize: '0.9em', color: '#666' }}>
+      <p style={{ fontSize: '0.9em', color: '#94a3b8' }}>
         Posted on: {new Date(post.created_at).toLocaleString()}
       </p>
       
@@ -107,17 +107,17 @@ export default function PostDetail() {
 
       <div style={{ marginTop: '20px', display: 'flex', gap: '15px', alignItems: 'center' }}>
         <button onClick={handleUpvote}>
-          👍 {post.upvotes || 0} Upvotes / Bets
+          🔥 {post.upvotes || 0} Upvotes / Bets
         </button>
         <Link to={`/edit/${post.id}`}>
           <button>Edit Post</button>
         </Link>
-        <button onClick={handleDelete} style={{ backgroundColor: '#ff4d4d', color: 'white' }}>
+        <button onClick={handleDelete} style={{ backgroundColor: '#ef4444', color: 'white' }}>
           Delete Post
         </button>
       </div>
 
-      <hr style={{ margin: '30px 0', border: 'none', borderTop: '1px solid #ddd' }} />
+      <hr style={{ margin: '30px 0', border: 'none', borderTop: '1px solid #334155' }} />
 
       {/* --- COMMENTS SECTION --- */}
       <h3>Comments</h3>
@@ -128,24 +128,27 @@ export default function PostDetail() {
           placeholder="Leave a comment on this challenge..."
           value={commentText}
           onChange={(e) => setCommentText(e.target.value)}
-          style={{ flex: 1, padding: '8px 12px' }}
+          style={{ flex: 1, padding: '10px 14px' }}
         />
         <button type="submit">Post Comment</button>
       </form>
 
+      {/* --- PLACED HERE --- */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         {(!post.comments || post.comments.length === 0) ? (
-          <p style={{ color: '#888', italic: 'true' }}>No comments yet. Be the first!</p>
+          <p style={{ color: '#94a3b8', fontStyle: 'italic' }}>No comments yet. Be the first!</p>
         ) : (
           post.comments.map((comment, idx) => (
             <div 
               key={idx} 
               style={{ 
-                padding: '10px 14px', 
-                backgroundColor: '#f5f5f5', 
-                borderRadius: '6px',
-                borderLeft: '4px solid #007bff',
-                color: '#222'
+                padding: '12px 16px', 
+                backgroundColor: 'var(--card-bg, #1e293b)', 
+                borderRadius: '8px',
+                border: '1px solid var(--card-border, #334155)',
+                borderLeft: '4px solid var(--primary-accent, #38bdf8)',
+                color: 'var(--text-main, #f8fafc)',
+                textAlign: 'left'
               }}
             >
               {comment}

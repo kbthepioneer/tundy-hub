@@ -1,11 +1,21 @@
+import { useState, useEffect } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
-// Import pages here once created
 import Home from './pages/Home'
 import CreatePost from './pages/CreatePost'
 import PostDetail from './pages/PostDetail'
 import EditPost from './pages/EditPost'
 
-function App() {
+export default function App() {
+  const [theme, setTheme] = useState('dark')
+
+  useEffect(() => {
+    document.body.setAttribute('data-theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'))
+  }
+
   return (
     <div className="app-container">
       <header className="navbar">
@@ -13,10 +23,13 @@ function App() {
         <nav>
           <Link to="/">Home Feed</Link>
           <Link to="/create">Create Challenge</Link>
+          <button onClick={toggleTheme} className="theme-toggle-btn">
+            {theme === 'dark' ? '☀️ Light' : '🌙 Dark'}
+          </button>
         </nav>
       </header>
 
-      <main className="content">
+      <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<CreatePost />} />
@@ -27,5 +40,3 @@ function App() {
     </div>
   )
 }
-
-export default App

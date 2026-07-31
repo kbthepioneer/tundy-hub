@@ -1,3 +1,4 @@
+/* Dark Mode Variables (Default) */
 :root {
   --bg-color: #0f172a;
   --card-bg: #1e293b;
@@ -6,9 +7,19 @@
   --text-muted: #94a3b8;
   --primary-accent: #38bdf8;
   --primary-hover: #0284c7;
-  --danger-accent: #ef4444;
-  --danger-hover: #dc2626;
   --input-bg: #0f172a;
+}
+
+/* Light Mode Variables Override */
+body[data-theme='light'] {
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --card-border: #cbd5e1;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --primary-accent: #0284c7;
+  --primary-hover: #0369a1;
+  --input-bg: #ffffff;
 }
 
 body {
@@ -18,6 +29,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-main);
   min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .app-container {
@@ -47,6 +59,7 @@ body {
 .navbar nav {
   display: flex;
   gap: 20px;
+  align-items: center;
 }
 
 .navbar nav a {
@@ -69,7 +82,7 @@ input, textarea, select {
   border-radius: 8px;
   font-size: 0.95rem;
   outline: none;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 input:focus, textarea:focus {
@@ -78,7 +91,7 @@ input:focus, textarea:focus {
 
 button {
   background-color: var(--primary-accent);
-  color: #0f172a;
+  color: #ffffff;
   border: none;
   padding: 10px 18px;
   border-radius: 8px;
@@ -89,11 +102,22 @@ button {
 
 button:hover {
   background-color: var(--primary-hover);
-  color: #ffffff;
 }
 
 button:active {
   transform: scale(0.98);
+}
+
+.theme-toggle-btn {
+  background-color: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--text-main);
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--card-border);
 }
 
 /* --- LINKS --- */
