@@ -1,10 +1,10 @@
 # Web Development Final Project - Tundy Hub
 
-Submitted by: **Kevin Bayona**
+Submitted by: **Kevin Bayona-Galindo**
 
-This web app: **Tundy Hub is a community forum dedicated to Toyota Tundra truck enthusiasts, allowing users to share build posts, discuss challenges, upvote favorite rigs, and leave comments.**
+This web app: **Tundy Hub is a community forum dedicated to Toyota Tundra truck enthusiasts, allowing users to share build posts, discuss challenges, upvote favorite rigs, upload photos, and leave comments.**
 
-Time spent: **10** hours spent in total
+Time spent: **12** hours spent in total
 
 ## Required Features
 
@@ -42,27 +42,29 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [x] Web app displays a loading animation whenever data is being fetched
+- [x] Web app displays a loading animation/state whenever data is being fetched
+- [x] User Customization: Light Mode vs. Dark Mode theme toggle button
+- [x] File Storage: Drag-and-drop local image uploads using Supabase Storage buckets
 
 The following **additional** features are implemented:
 
-* [x] Custom dark-theme responsive UI with modern CSS design tokens
+* [x] Custom dark/light responsive UI with CSS design tokens and smooth transitions
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='YOUR_GIF_URL_HERE' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src="https://github.com/user-attachments/assets/db81b262-832a-4e0a-9f85-75c213049ce6" alt="Tundy Hub Demo Walkthrough" width="100%" />
 
-GIF created with **ScreenToGif** (Windows) / **Kap** (macOS).
+GIF created with **ScreenToGif** / **Loom**.
 
 ## Notes
 
-Configuring state syncing between local React component state and Supabase arrays for real-time comment rendering.
+Configuring Supabase Storage bucket policies to allow drag-and-drop file uploads, alongside managing state synchronization between React local state and array columns in Supabase for real-time comment updates.
 
 ## License
 
-    Copyright 2026 Kevin Bayona
+    Copyright 2026 Kevin Bayona-Galindo
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
