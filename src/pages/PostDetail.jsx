@@ -107,7 +107,7 @@ export default function PostDetail() {
 
       <div style={{ marginTop: '20px', display: 'flex', gap: '15px', alignItems: 'center' }}>
         <button onClick={handleUpvote}>
-          🔥 {post.upvotes || 0} Upvotes / Bets
+          🔥 {post.upvotes || 0} Upvotes
         </button>
         <Link to={`/edit/${post.id}`}>
           <button>Edit Post</button>
